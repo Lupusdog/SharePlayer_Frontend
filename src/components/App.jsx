@@ -7,7 +7,7 @@ import {Footer} from "./Footer"
 export const App = memo(() => {
   return (
     <Center>
-    <Box w="1200px">
+    <Box w="auto">
       <Header />
       <Main />
       <Footer />

@@ -39,27 +39,27 @@ export const Main = memo(() => {
 
     return(
         <Flex>
-            <Box w="75%" h="550px" >
-                <Input placeholder="再生したい動画のurlを貼り付けてください" onChange={
+            <Box w="75%" h="auto" >
+                <Input mb={6} placeholder="再生したい動画のurlを貼り付けてください" onChange={
                     (event) => {
                         setUrl(event.target.value);
                     }
                 } />
                 <Center>
                     <Box>
-                        <ReactPlayer  height={450} url={Url}  controls={true} playing={true} ref={ref} onProgress={(state) => {
+                        <ReactPlayer  displayheight={500} url={Url}  controls={true} playing={true} ref={ref} onProgress={(state) => {
                             console.log("Progress");
                             setTime(state.playedSeconds);
                             if(syncFlag)postMovie();
                         }} />
                         <Stack direction={"row"} spacing={4}>
-                        <Button onClick={(event) => {
+                        <Button colorScheme="teal" onClick={(event) => {
                             setSyncFlag(true);
                         }}>動画の共有開始</Button>
-                        <Button onClick={(event) => {
+                        <Button colorScheme="teal" onClick={(event) => {
                            setSyncFlag(false);
                         }}>動画の共有停止</Button>
-                        <Button onClick={(event) => {
+                        <Button colorScheme="teal" onClick={(event) => {
                             getMovie();
                         }}>動画を見る</Button>
                         </Stack>
