@@ -2,7 +2,7 @@ import {
     ListItem,
     UnorderedList,
   } from '@chakra-ui/react';
-import {memo} from "react"
+import { memo} from "react"
 
 
 export const MakeList =  memo ((props) => {

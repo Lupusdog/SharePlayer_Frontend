@@ -1,9 +1,9 @@
-import {Box,Input,Center,Flex,Button,Stack} from "@chakra-ui/react"
-import {useState,memo,useEffect,useCallback} from "react"
+import {Box,Input,Center,Flex,Button, Stack} from "@chakra-ui/react"
+import {useState, memo, useEffect} from "react"
 import React from "react"
 import ReactPlayer from "react-player";
 import { Aside } from "./Aside";
-import { response } from "express";
+import { useCallback } from "react";
 
 
 export const Main = memo(() => {
@@ -11,29 +11,12 @@ export const Main = memo(() => {
     const [Url, setUrl] = useState("");
     const [Time, setTime] = useState(0);
     const [syncFlag, setSyncFlag] = useState(false);
-    // const [shareTime,setShareTime] = useState(0);
     //通常の定数で保管するとPlayerの挙動に問題が出るため、useStateを使用。
     const [ref,setRef] = useState(React.createRef())
 
-    // useEffect(() => {
-    //     setInterval(() => {
-    //         console.log("Interval");
-    //         fetch('/share', {
-    //             method: 'POST',
-    //             headers: {
-    //             'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify({
-    //                 url: Url,
-    //                 time: Time
-    //             })
-    //         }).then((res) =>{
-    //             console.log("送信");
-    //             }
-    //         ).catch((error) => {
-    //             console.log("送信失敗", error);
-    //         })},3000)
-    //         },[])
+    useEffect(() => {
+        setInterval(() => {postMovie()},5000)
+    },[])
 
 
     const postMovie = () => {
@@ -46,17 +29,12 @@ export const Main = memo(() => {
                 url: Url,
                 time: Time
             })
-        }).then((res) =>{
-            // if(!response.ok) {
-            //     console.error("サーバーエラー");
-            // }
+        }).then( (res) =>{
             console.log("送信");
             }
         ).catch((error) => {
-            console.log("送信失敗", error);
+            console.error("error",error);
         })}
-
-
         
     const getMovie = () => {fetch("/share").then((res) => res.json()).then((data) => {
             console.log(data.time);
@@ -78,24 +56,18 @@ export const Main = memo(() => {
                         <ReactPlayer  height={450} url={Url}  controls={true} playing={true} ref={ref} onProgress={(state) => {
                             console.log("Progress");
                             setTime(state.playedSeconds);
-                            console.log(syncFlag);
-                            if(syncFlag)postMovie()
+                            // if(syncFlag)postMovie();
                         }} />
-                        <Stack spacing={4} direction="row">
-                        <Button colorScheme="green" size="md" onClick={(event) => {
+                        <Stack direction={"row"} spacing={4}>
+                        <Button onClick={(event) => {
                             setSyncFlag(true);
-                            console.log("fire!");                            
-                        }
-                        }>動画の共有開始(HOST)</Button>
-                        <Button colorScheme="green" size="md" onClick={(event) => {
-                            setSyncFlag(false);
-                            console.log("stop!");
-                        }
-                        }>動画の共有停止(HOST)</Button>
-                        <Button colorScheme="green" size="md" onClick={(event) => {
+                        }}>動画の共有開始</Button>
+                        <Button onClick={(event) => {
+                           setSyncFlag(false);
+                        }}>動画の共有停止</Button>
+                        <Button onClick={(event) => {
                             getMovie();
-                            console.log("gotcha!");
-                        }}>動画の取得(Guest)</Button>
+                        }}>動画を見る</Button>
                         </Stack>
                     </Box>
                 </Center>
