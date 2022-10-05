@@ -19,7 +19,7 @@ export const Header = memo (() => {
                         }
                     } />
                     <Button  margin="auto" colorScheme="blue"  onClick={(event) => {
-                        fetch("/user",{
+                        fetch("https://pacific-hamlet-42593.herokuapp.com/user",{
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
