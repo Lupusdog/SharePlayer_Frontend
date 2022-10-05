@@ -1,9 +1,8 @@
 import {Box,Input,Center,Flex,Button, Stack} from "@chakra-ui/react"
-import {useState, memo, useEffect} from "react"
+import {useState, memo} from "react"
 import React from "react"
 import ReactPlayer from "react-player";
 import { Aside } from "./Aside";
-import { useCallback } from "react";
 
 
 export const Main = memo(() => {
@@ -13,11 +12,6 @@ export const Main = memo(() => {
     const [syncFlag, setSyncFlag] = useState(false);
     //通常の定数で保管するとPlayerの挙動に問題が出るため、useStateを使用。
     const [ref,setRef] = useState(React.createRef())
-
-    // useEffect(() => {
-    //     setInterval(() => {postMovie()},5000)
-    // },[])
-
 
     const postMovie = () => {
         fetch('/share', {
