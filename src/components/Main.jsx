@@ -40,7 +40,7 @@ export const Main = memo(() => {
     return(
         <Flex>
             <Box w="75%" h="auto" >
-                <Input mb={6} placeholder="再生したい動画のurlを貼り付けてください" onChange={
+                <Input mb={6} placeholder="再生・共有したい動画のurlを貼り付けてください" onChange={
                     (event) => {
                         setUrl(event.target.value);
                     }
@@ -61,7 +61,7 @@ export const Main = memo(() => {
                         }}>動画の共有停止</Button>
                         <Button colorScheme="teal" onClick={(event) => {
                             getMovie();
-                        }}>動画を見る</Button>
+                        }}>共有された動画を見る</Button>
                         </Stack>
                     </Box>
                 </Center>
