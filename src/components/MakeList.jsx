@@ -6,7 +6,7 @@ import {memo} from "react"
 
 
 export const MakeList =  memo ((props) => {
-            return (<UnorderedList>{props.chatData.map((chat) => 
+            return (<UnorderedList spacing={2} >{props.chatData.map((chat) => 
             (<ListItem>{chat.Name + ": " + chat.Comment}</ListItem>))
             }</UnorderedList>
             );

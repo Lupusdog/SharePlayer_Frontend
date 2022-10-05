@@ -20,7 +20,7 @@ export const Aside = memo ((props) => {
 
   return(
     <Box  w="25%" h="550px" padding="50px">
-      <Text>Chat</Text>
+      <Text className="text-blue-500">Chat</Text>
         <MakeList chatData={ChatData} />
         <Input placeholder="コメントを入力" onChange={(event) => {
           setComment(event.target.value);
