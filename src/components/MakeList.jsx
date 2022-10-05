@@ -2,19 +2,13 @@ import {
     ListItem,
     UnorderedList,
   } from '@chakra-ui/react';
-import { memo} from "react"
+import {memo} from "react"
 
 
 export const MakeList =  memo ((props) => {
-  
-        if(props.chat.length === 0){
-            return <UnorderedList><ListItem>チャットはまだありません！</ListItem></UnorderedList>
-        }
-        else {
-            return (<UnorderedList>{props.chat.map((chat) => 
-            (<ListItem>{chat.name + ":" + chat.comment}</ListItem>))
+            return (<UnorderedList>{props.chatData.map((chat) => 
+            (<ListItem>{chat.Name + ": " + chat.Comment}</ListItem>))
             }</UnorderedList>
             );
         }
-    }
 );

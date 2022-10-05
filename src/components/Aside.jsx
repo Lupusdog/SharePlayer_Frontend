@@ -6,20 +6,22 @@ import { useEffect } from "react";
 export const Aside = memo ((props) => {
   
   const [Comment, setComment] = useState("");
-  const [Chat, setChat] = useState([]);
+  const [ChatData, setChatData] = useState([{}]);
 
   useEffect(() => {
-    fetch("/chat").then(res => res.json()).then(data => setChat(data.chat));
+    fetch("/chat").then(res => res.json()).then(data => setChatData(data.chat));
     setInterval(() => {
       console.log("loaded!");
-      fetch("/chat").then(res => res.json()).then(data => setChat(data.chat));
-    }, 10000);
+      fetch("/chat").then(res => res.json()).then(data => {setChatData(data.chat)
+            console.log(data.chat)
+      });
+    }, 1000);
   }, []);
 
   return(
     <Box  w="25%" h="550px" padding="50px">
       <Text>Chat</Text>
-        <MakeList chat={Chat} />
+        <MakeList chatData={ChatData} />
         <Input placeholder="コメントを入力" onChange={(event) => {
           setComment(event.target.value);
         }}/>
@@ -32,7 +34,7 @@ export const Aside = memo ((props) => {
               body: JSON.stringify({
                 comment: Comment
               })
-          }).then((res) => res.json()).then((data) => setChat(data.chat))
+          }).then((res) => console.log("チャット送信！"))
         }}>送信</Button>
     </Box>
   )

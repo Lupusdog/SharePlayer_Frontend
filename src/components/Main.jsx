@@ -14,9 +14,9 @@ export const Main = memo(() => {
     //通常の定数で保管するとPlayerの挙動に問題が出るため、useStateを使用。
     const [ref,setRef] = useState(React.createRef())
 
-    useEffect(() => {
-        setInterval(() => {postMovie()},5000)
-    },[])
+    // useEffect(() => {
+    //     setInterval(() => {postMovie()},5000)
+    // },[])
 
 
     const postMovie = () => {
@@ -56,7 +56,7 @@ export const Main = memo(() => {
                         <ReactPlayer  height={450} url={Url}  controls={true} playing={true} ref={ref} onProgress={(state) => {
                             console.log("Progress");
                             setTime(state.playedSeconds);
-                            // if(syncFlag)postMovie();
+                            if(syncFlag)postMovie();
                         }} />
                         <Stack direction={"row"} spacing={4}>
                         <Button onClick={(event) => {
