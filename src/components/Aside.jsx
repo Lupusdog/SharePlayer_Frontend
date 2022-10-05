@@ -9,10 +9,10 @@ export const Aside = memo ((props) => {
   const [ChatData, setChatData] = useState([{}]);
 
   useEffect(() => {
-    fetch("https://pacific-hamlet-42593.herokuapp.com/chat").then(res => res.json()).then(data => setChatData(data.chat));
+    fetch("/chat").then(res => res.json()).then(data => setChatData(data.chat));
     setInterval(() => {
       console.log("loaded!");
-      fetch("https://pacific-hamlet-42593.herokuapp.com/chat").then(res => res.json()).then(data => {setChatData(data.chat)
+      fetch("/chat").then(res => res.json()).then(data => {setChatData(data.chat)
             console.log(data.chat)
       });
     }, 1000);
@@ -26,7 +26,7 @@ export const Aside = memo ((props) => {
           setComment(event.target.value);
         }}/>
         <Button colorScheme="blue" onClick={(event) => {
-          fetch("https://pacific-hamlet-42593.herokuapp.com/chat",{
+          fetch("/chat",{
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
