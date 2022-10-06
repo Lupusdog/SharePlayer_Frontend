@@ -8,12 +8,12 @@ export const Aside = memo((props) => {
   const [ChatData, setChatData] = useState([{}]);
 
   useEffect(() => {
-    fetch("https://pacific-hamlet-42593.herokuapp.com/chat")
+    fetch("https://shareplayer-backend.herokuapp.com/chat")
       .then((res) => res.json())
       .then((data) => setChatData(data.chat));
     setInterval(() => {
       console.log("loaded!");
-      fetch("https://pacific-hamlet-42593.herokuapp.com/chat")
+      fetch("https://shareplayer-backend.herokuapp.com//chat")
         .then((res) => res.json())
         .then((data) => {
           setChatData(data.chat);
@@ -35,7 +35,7 @@ export const Aside = memo((props) => {
       <Button
         colorScheme="blue"
         onClick={(event) => {
-          fetch("https://pacific-hamlet-42593.herokuapp.com/chat", {
+          fetch("https://shareplayer-backend.herokuapp.com/chat", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

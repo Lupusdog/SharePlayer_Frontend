@@ -33,7 +33,7 @@ export const Header = memo(() => {
             margin="auto"
             colorScheme="blue"
             onClick={(event) => {
-              fetch("https://pacific-hamlet-42593.herokuapp.com/user", {
+              fetch("https://shareplayer-backend.herokuapp.com/user", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",

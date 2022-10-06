@@ -12,7 +12,7 @@ export const Main = memo(() => {
   const [ref, setRef] = useState(React.createRef());
 
   const postMovie = () => {
-    fetch("https://pacific-hamlet-42593.herokuapp.com/share", {
+    fetch("https://shareplayer-backend.herokuapp.com/share", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,7 +31,7 @@ export const Main = memo(() => {
   };
 
   const getMovie = () => {
-    fetch("https://pacific-hamlet-42593.herokuapp.com/share")
+    fetch("https://shareplayer-backend.herokuapp.com/share")
       .then((res) => res.json())
       .then((data) => {
         console.log(data.time);
