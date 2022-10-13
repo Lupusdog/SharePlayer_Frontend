@@ -7,10 +7,12 @@ import {
   Input,
   Button,
 } from "@chakra-ui/react";
+import React from "react";
+import { FC } from "react";
 import { memo, useState } from "react";
 
-export const Header = memo(() => {
-  const [Name, setName] = useState("No Name");
+export const Header: FC = memo(() => {
+  const [name, setName] = useState("No Name");
 
   return (
     <Flex>
@@ -39,7 +41,7 @@ export const Header = memo(() => {
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                  name: Name,
+                  name: name,
                 }),
               });
             }}

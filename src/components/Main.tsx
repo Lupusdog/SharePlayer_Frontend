@@ -3,13 +3,14 @@ import { useState, memo } from "react";
 import React from "react";
 import ReactPlayer from "react-player";
 import { Aside } from "./Aside";
+import { FC } from "react";
 
-export const Main = memo(() => {
+export const Main: FC = memo(() => {
   const [Url, setUrl] = useState("");
   const [Time, setTime] = useState(0);
-  const [syncFlag, setSyncFlag] = useState(false);
+  const [syncFlag, setSyncFlag] = useState<boolean>(false);
   //通常の定数で保管するとPlayerの挙動に問題が出るため、useStateを使用。
-  const [ref, setRef] = useState(React.createRef());
+  const [ref, setRef] = useState(React.createRef<ReactPlayer>());
 
   const postMovie = () => {
     fetch("https://shareplayer-backend.herokuapp.com/share", {
@@ -35,8 +36,12 @@ export const Main = memo(() => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data.time);
+        console.log(data.url);
         setUrl(data.url);
-        ref.current.seekTo(data.time);
+        if (!ref.current) {
+          console.log("refに問題!");
+        }
+        ref.current?.seekTo(data.time);
       });
   };
 
@@ -61,14 +66,18 @@ export const Main = memo(() => {
               onProgress={(state) => {
                 console.log("Progress");
                 setTime(state.playedSeconds);
-                if (syncFlag) postMovie();
+                if (syncFlag) {
+                  postMovie();
+                }
               }}
             />
             <Stack direction={"row"} spacing={4}>
               <Button
                 colorScheme="teal"
                 onClick={(event) => {
+                  console.log("共有開始");
                   setSyncFlag(true);
+                  console.log(syncFlag);
                 }}
               >
                 動画の共有開始
@@ -76,7 +85,9 @@ export const Main = memo(() => {
               <Button
                 colorScheme="teal"
                 onClick={(event) => {
+                  console.log("共有停止");
                   setSyncFlag(false);
+                  console.log(syncFlag);
                 }}
               >
                 動画の共有停止
