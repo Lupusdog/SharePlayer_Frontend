@@ -19,7 +19,8 @@ export const Aside: FC = memo((props) => {
         .then((res) => res.json())
         .then((data) => {
           setChatData(data.chat);
-        });
+        })
+        .catch((error) => console.log(error));
     }, 1000);
   }, []);
 
