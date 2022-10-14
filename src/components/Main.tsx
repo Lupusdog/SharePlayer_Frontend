@@ -35,13 +35,8 @@ export const Main: FC = memo(() => {
     fetch("https://shareplayer-backend.herokuapp.com/share")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.time);
-        console.log(data.url);
         setUrl(data.url);
-        if (!ref.current) {
-          console.log("refに問題!");
-        }
-        ref.current?.seekTo(data.time);
+        setTimeout(() => ref.current?.seekTo(data.time), 1);
       });
   };
 
