@@ -17,6 +17,7 @@ export const Aside: FC = memo((props) => {
       console.log("loaded!");
       fetch("/chat")
         .then((res) => res.json())
+        .catch((error) => console.log(error))
         .then((data) => {
           setChatData(data.chat);
         })
