@@ -15,9 +15,8 @@ export const Aside: FC = memo((props) => {
       .then((data) => setChatData(data.chat));
     setInterval(() => {
       console.log("loaded!");
-      fetch("/chat")
+      fetch("https://shareplayer-backend.herokuapp.com/chat")
         .then((res) => res.json())
-        .catch((error) => console.log(error))
         .then((data) => {
           setChatData(data.chat);
         })
