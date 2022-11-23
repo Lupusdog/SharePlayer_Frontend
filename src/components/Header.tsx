@@ -33,9 +33,9 @@ export const Header: FC = memo(() => {
           />
           <Button
             margin="auto"
-            colorScheme="blue"
+            colorScheme="teal"
             onClick={(event) => {
-              fetch("https://shareplayer-backend.herokuapp.com/user", {
+              fetch("http://localhost:8080/user", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
