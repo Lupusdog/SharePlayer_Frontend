@@ -35,7 +35,7 @@ export const Header: FC = memo(() => {
             margin="auto"
             colorScheme="teal"
             onClick={(event) => {
-              fetch("http://localhost:8080/user", {
+              fetch("https://localhost:8080/user", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
