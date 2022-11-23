@@ -12,7 +12,7 @@ export const Aside: FC = memo((props) => {
   useEffect(() => {
     setInterval(() => {
       console.log("loaded!");
-      fetch("http://localhost:8080/chat", {})
+      fetch("https://shareplayer-backend.herokuapp.com/chat", {})
         .then((res) => res.json())
         .then((data) => {
           setChatData(data.chat);
@@ -34,7 +34,7 @@ export const Aside: FC = memo((props) => {
       <Button
         colorScheme="teal"
         onClick={(event) => {
-          fetch("http://localhost:8080/chat", {
+          fetch("https://shareplayer-backend.herokuapp.com/chat", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
