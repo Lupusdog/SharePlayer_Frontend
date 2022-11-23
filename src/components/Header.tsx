@@ -35,7 +35,7 @@ export const Header: FC = memo(() => {
             margin="auto"
             colorScheme="teal"
             onClick={(event) => {
-              fetch("https://www.bluearcfam.wiki/user", {
+              fetch("https://www.shareplayer.site/user", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
