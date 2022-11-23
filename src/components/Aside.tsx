@@ -12,7 +12,9 @@ export const Aside: FC = memo((props) => {
   useEffect(() => {
     setInterval(() => {
       console.log("loaded!");
-      fetch("https://shareplayer-backend.herokuapp.com/chat")
+      fetch("https://shareplayer-backend.herokuapp.com/chat", {
+        credentials: "include",
+      })
         .then((res) => res.json())
         .then((data) => {
           setChatData(data.chat);
