@@ -13,7 +13,7 @@ export const Main: FC = memo(() => {
   const [ref, setRef] = useState(React.createRef<ReactPlayer>());
 
   const postMovie = () => {
-    fetch("https://www.bluearcfam.wiki/share", {
+    fetch("https://www.shareplayer.site/share", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,7 +32,7 @@ export const Main: FC = memo(() => {
   };
 
   const getMovie = () => {
-    fetch("https://www.bluearcfam.wiki/share")
+    fetch("https://www.shareplayer.site/share")
       .then((res) => res.json())
       .then((data) => {
         setUrl(data.url);
