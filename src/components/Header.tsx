@@ -40,6 +40,7 @@ export const Header: FC = memo(() => {
                 headers: {
                   "Content-Type": "application/json",
                 },
+                credentials: "include",
                 body: JSON.stringify({
                   name: name,
                 }),
