@@ -4,7 +4,7 @@ import { FC } from "react";
 import { memo } from "react";
 import type { ChatData } from "../types/ChatData";
 
-export const MakeList: FC<ChatData> = memo((props) => {
+export const MakeChatList: FC<ChatData> = memo((props) => {
   return (
     <UnorderedList spacing={2}>
       {props.chatData.map((chat: { Name: string; Comment: string }) => (

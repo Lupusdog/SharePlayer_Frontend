@@ -1,5 +1,5 @@
 import { Box, Text, Input, Button } from "@chakra-ui/react";
-import { MakeList } from "./MakeList";
+import { MakeChatList } from "./MakeChatList";
 import { memo, useState } from "react";
 import { useEffect } from "react";
 import React from "react";
@@ -24,7 +24,7 @@ export const Aside: FC = memo((props) => {
   return (
     <Box w="25%" h="550px" padding="50px">
       <Text className="text-blue-500">Chat</Text>
-      <MakeList chatData={chatData} />
+      <MakeChatList chatData={chatData} />
       <Input
         placeholder="コメントを入力"
         onChange={(event) => {
