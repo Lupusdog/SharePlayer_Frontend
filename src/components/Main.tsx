@@ -12,6 +12,7 @@ export const Main: FC = memo(() => {
   //通常の定数で保管するとPlayerの挙動に問題が出るため、useStateを使用。
   const [ref, setRef] = useState(React.createRef<ReactPlayer>());
 
+  //syncFlagがtrueの際に、バックエンドに動画のURLと再生時点を送信
   const postMovie = () => {
     fetch("https://www.shareplayer.site/share", {
       method: "POST",
@@ -31,6 +32,7 @@ export const Main: FC = memo(() => {
       });
   };
 
+  //共有された動画を見るボタンで、バックエンドから動画のURLと再生時点を取得
   const getMovie = () => {
     fetch("https://www.shareplayer.site/share")
       .then((res) => res.json())
@@ -43,6 +45,7 @@ export const Main: FC = memo(() => {
   return (
     <Flex>
       <Box w="75%" h="auto">
+        {/* 再生・共有したい動画のURLをインプットに貼り付けると自動でロード、再生開始 */}
         <Input
           mb={6}
           placeholder="再生・共有したい動画のurlを貼り付けてください"
@@ -66,6 +69,7 @@ export const Main: FC = memo(() => {
                 }
               }}
             />
+            {/* 各種ボタンで動画の共有・取得 */}
             <Stack direction={"row"} spacing={4}>
               <Button
                 colorScheme="teal"

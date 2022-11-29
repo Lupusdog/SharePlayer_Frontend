@@ -23,6 +23,7 @@ export const Header: FC = memo(() => {
           </Heading>
           <Text>Youtube,Twitch,SoundCloud,Facebook,etc...</Text>
         </Box>
+        {/* インプットにユーザー名を入力し、登録ボタンでユーザー名をバックエンドに送信して、Cookie管理 */}
         <Box>
           <Input
             w="150%"

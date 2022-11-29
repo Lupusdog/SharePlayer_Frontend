@@ -9,10 +9,11 @@ export const Aside: FC = memo((props) => {
   const [comment, setComment] = useState("");
   const [chatData, setChatData] = useState([]);
 
+  //定期的にチャットデータを更新
   useEffect(() => {
     setInterval(() => {
       console.log("loaded!");
-      fetch("https://www.shareplayer.site/chat", {})
+      fetch("https://www.shareplayer.site/chat")
         .then((res) => res.json())
         .then((data) => {
           setChatData(data.chat);
@@ -23,8 +24,11 @@ export const Aside: FC = memo((props) => {
 
   return (
     <Box w="25%" h="550px" padding="50px">
+      {/* チャット欄 */}
       <Text className="text-blue-500">Chat</Text>
+      {/* バックエンドから受け取ったチャットデータでチャットリストを生成 */}
       <MakeChatList chatData={chatData} />
+      {/* チャットに追加する項目を入力、ボタンで送信 */}
       <Input
         placeholder="コメントを入力"
         onChange={(event) => {
