@@ -6,7 +6,7 @@ import { memo } from "react";
 export const Footer: FC = memo(() => {
   return (
     <Box w="auto" h="auto">
-      <Text>製作者:Lupusdog(https://twitter.com/Lupusdog_Ookami)</Text>
+      <Text>製作者:Lupusdog</Text>
     </Box>
   );
 });
